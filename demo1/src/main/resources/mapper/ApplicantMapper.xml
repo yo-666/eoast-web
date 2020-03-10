@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.ApplicantMapper">
+    <!--select-->
+    <select id="getAll" parameterType="String" resultType="com.example.entity.Applicant">
+        SELECT * FROM ${tableName}  <!--表名要用$-->
+    </select>
+    <select id="getByApartment" resultType="com.example.entity.Applicant">
+        SELECT *
+        FROM ${tableName}
+        WHERE choice1 = #{choice} OR choice2 = #{choice} ORDER BY key_ ASC
+    </select>
+    <!--delete-->
+    <delete id="deleteApplicant">
+        DELETE FROM ${tableName} WHERE key_ = #{key_}
+    </delete>
+    <!--update-->
+    <!--初试成绩-->
+    <update id="updateFirstGrade1">
+        UPDATE ${tableName} SET firstGrade1 = #{firstGrade1} WHERE key_ = #{key_}
+    </update>
+    <update id="updateFirstGrade2">
+        UPDATE ${tableName} SET firstGrade2 = #{firstGrade2} WHERE key_ = #{key_}
+    </update>
+    <update id="updateFirstGrade3">
+        UPDATE ${tableName} SET firstGrade3 = #{firstGrade3} WHERE key_ = #{key_}
+    </update>
+    <!--复试成绩-->
+    <update id="updateRetrialGrade1">
+        UPDATE ${tableName} SET retrialGrade1 = #{retrialGrade1} WHERE key_ = #{key_}
+    </update>
+    <update id="updateRetrialGrade2">
+        UPDATE ${tableName} SET retrialGrade2 = #{retrialGrade2} WHERE key_ = #{key_}
+    </update>
+    <update id="updateRetrialGrade3">
+        UPDATE ${tableName} SET retrialGrade3 = #{retrialGrade3} WHERE key_ = #{key_}
+    </update>
+    <!--复试评价-->
+    <update id="updateRetrialAppraise1">
+        UPDATE ${tableName} SET retrialAppraise1 = #{retrialAppraise1} WHERE key_ = #{key_}
+    </update>
+    <update id="updateRetrialAppraise2">
+        UPDATE ${tableName} SET retrialAppraise2 = #{retrialAppraise2} WHERE key_ = #{key_}
+    </update>
+    <update id="updateRetrialAppraise3">
+        UPDATE ${tableName} SET retrialAppraise3 = #{retrialAppraise3} WHERE key_ = #{key_}
+    </update>
+    <!--确定部门录取-->
+    <update id="updateAdmit1">
+        UPDATE ${tableName} SET admit1 = #{index} WHERE key_ = #{key_}
+    </update>
+    <update id="updateAdmit2">
+        UPDATE ${tableName} SET admit2 = #{index} WHERE key_ = #{key_}
+    </update>
+    <update id="updateAdmit3">
+        UPDATE ${tableName} SET admit3 = #{index} WHERE key_ = #{key_}
+    </update>
+    <!--部门优先考虑-->
+    <update id="updatePriority1">
+        UPDATE ${tableName} SET priority1 = #{index} WHERE key_ = #{key_}
+    </update>
+    <update id="updatePriority2">
+        UPDATE ${tableName} SET priority2 = #{index} WHERE key_ = #{key_}
+    </update>
+    <update id="updatePriority3">
+        UPDATE ${tableName} SET priority3 = #{index} WHERE key_ = #{key_}
+    </update>
+    <!--最终录取-->
+    <update id="updateFinalAdmit1">
+        UPDATE ${tableName} SET finalAdmit1=1 WHERE key_ = #{key_}
+    </update>
+    <update id="updateFinalAdmit2">
+        UPDATE ${tableName} SET finalAdmit2=1 WHERE key_ = #{key_}
+    </update>
+    <update id="updateFinalAdmit3">
+        UPDATE ${tableName} SET finalAdmit3=1 WHERE key_ = #{key_}
+    </update>
+    <!--insert-->
+    <insert id="addApplicant1">
+        INSERT INTO ${tableName}
+        (id_,name,performance,sex)
+        VALUES
+        (#{id},#{name},#{performance},#{sex})
+    </insert>
+    <update id="addApplicant2">
+        UPDATE ${tableName} SET email = #{email}, tell = #{tell},choice1 = #{choice1},choice2 = #{choice2},message= #{message} WHERE id_ = #{id}
+    </update>
+</mapper>

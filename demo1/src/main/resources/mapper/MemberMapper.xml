@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.MemberMapper">
+    <!--update-->
+    <!--专业-->
+    <update id="updatePerformance">
+        UPDATE ${tableName} SET performance = #{performance} WHERE key_ = #{key_}
+    </update>
+    <!--职务-->
+    <update id="updatePosition">
+        UPDATE ${tableName} SET position = #{position} WHERE key_ = #{key_}
+    </update>
+    <!--部门-->
+    <update id="updateApartment">
+        UPDATE ${tableName} SET apartment = #{apartment} WHERE key_ = #{key_}
+    </update>
+    <!--select-->
+    <select id="getAll" parameterType="String" resultType="com.example.entity.Member">
+        SELECT * FROM ${tableName}  <!--表名要用$-->
+    </select>
+    <select id="getByApartment" resultType="com.example.entity.Member">
+        SELECT *
+        FROM ${tableName}
+        WHERE apartment = #{choice} ORDER BY key_ ASC
+    </select>
+    <!--导入-->
+    <!--电子部-->
+    <insert id="addMember1">
+        INSERT INTO ${objectTable} (
+        ${objectTable}.id_,${objectTable}.name,${objectTable}.performance,
+        ${objectTable}.sex,${objectTable}.email,${objectTable}.tell,
+        ${objectTable}.finalAdmit1)
+        SELECT ${sourceTable}.id_,${sourceTable}.name,${sourceTable}.performance,
+        ${sourceTable}.sex,${sourceTable}.email,${sourceTable}.tell,
+        ${sourceTable}.finalAdmit1
+        FROM ${sourceTable}
+        WHERE ${sourceTable}.finalAdmit1 = 1
+    </insert>
+    <!--计算机部-->
+    <insert id="addMember2">
+        INSERT INTO ${objectTable} (
+        ${objectTable}.id_,${objectTable}.name,${objectTable}.performance,
+        ${objectTable}.sex,${objectTable}.email,${objectTable}.tell,
+        ${objectTable}.finalAdmit2)
+        SELECT ${sourceTable}.id_,${sourceTable}.name,${sourceTable}.performance,
+        ${sourceTable}.sex,${sourceTable}.email,${sourceTable}.tell,
+        ${sourceTable}.finalAdmit2
+        FROM ${sourceTable}
+        WHERE ${sourceTable}.finalAdmit2 = 1
+    </insert>
+    <!--多媒体办公中心-->
+    <insert id="addMember3">
+        INSERT INTO ${objectTable} (
+        ${objectTable}.id_,${objectTable}.name,${objectTable}.performance,
+        ${objectTable}.sex,${objectTable}.email,${objectTable}.tell,
+        ${objectTable}.finalAdmit3)
+        SELECT ${sourceTable}.id_,${sourceTable}.name,${sourceTable}.performance,
+        ${sourceTable}.sex,${sourceTable}.email,${sourceTable}.tell,
+        ${sourceTable}.finalAdmit3
+        FROM ${sourceTable}
+        WHERE ${sourceTable}.finalAdmit3 = 1
+    </insert>
+    <!--添加默认部门和职位-->
+    <!--电子部-->
+    <update id="updateAptAndPst1">
+        UPDATE ${tableName} SET apartment = '电子部' WHERE finalAdmit1 = 1
+    </update>
+    <!--计算机部-->
+    <update id="updateAptAndPst2">
+        UPDATE ${tableName} SET apartment = '计算机部' WHERE finalAdmit2 = 1
+    </update>
+    <!--多媒体办公中心-->
+    <update id="updateAptAndPst3">
+        UPDATE ${tableName} SET apartment = '多媒体办公中心' WHERE finalAdmit3 = 1
+    </update>
+
+</mapper>

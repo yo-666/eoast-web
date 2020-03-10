@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.TableMapper">
+    <!--新建[招新]表-->
+    <update id="creatTable1">
+        CREATE TABLE    ${tableName}     (
+     id_    varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+     name    varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+     performance    varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+     sex    varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+     email    varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+     tell    varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+     choice1    varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+     choice2    varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+     message    varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+     firstGrade1    int(255) UNSIGNED NULL DEFAULT NULL,
+     firstGrade2    int(255) UNSIGNED NULL DEFAULT NULL,
+     firstGrade3    int(255) UNSIGNED NULL DEFAULT NULL,
+     retrialGrade1    int(255) UNSIGNED NULL DEFAULT NULL,
+     retrialGrade2    int(255) UNSIGNED NULL DEFAULT NULL,
+     retrialGrade3    int(255) UNSIGNED NULL DEFAULT NULL,
+     retrialAppraise1    varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+     retrialAppraise2    varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+     retrialAppraise3    varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+     admit1    int(1) UNSIGNED NULL DEFAULT NULL,
+     admit2    int(1) UNSIGNED NULL DEFAULT NULL,
+     admit3    int(1) UNSIGNED NULL DEFAULT NULL,
+     priority1    int(1) UNSIGNED NULL DEFAULT NULL,
+     priority2    int(1) UNSIGNED NULL DEFAULT NULL,
+     priority3    int(1) UNSIGNED NULL DEFAULT NULL,
+     finalAdmit1    int(1) UNSIGNED NULL DEFAULT NULL,
+     finalAdmit2    int(1) UNSIGNED NULL DEFAULT NULL,
+     finalAdmit3    int(1) UNSIGNED NULL DEFAULT NULL,
+     key_    int(1) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (   key_   ) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 460 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic
+    </update>
+    <!--新建[社员]表-->
+    <update id="creatTable2">
+    CREATE TABLE   ${tableName}    (
+    id_   varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+    name   varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+    performance   varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+    sex   varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+    email   varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+    tell   varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+    apartment   varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+    position   varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+    key_   int(255) UNSIGNED NOT NULL AUTO_INCREMENT,
+    finalAdmit1   int(1) UNSIGNED NULL DEFAULT NULL,
+    finalAdmit2   int(1) UNSIGNED NULL DEFAULT NULL,
+    finalAdmit3   int(1) UNSIGNED NULL DEFAULT NULL,
+    PRIMARY KEY (  key_  ) USING BTREE
+    ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic
+    </update>
+    <!--删除表-->
+    <update id="deleteTable">
+        DROP TABLE ${tableName}
+    </update>
+
+
+</mapper>
